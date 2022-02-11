@@ -1,0 +1,33 @@
+name: 'Test Runner'
+on:
+  pull_request:
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - name: Install Yarn
+        if: ${{ env.ACT }}
+        run: npm install --global yarn
+
+      - name: Setup Node and Cached Dependencies
+        if: ${{ !env.ACT }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Test
+        run: yarn run test#ci
+
+      - uses: actions/upload-artifact@v2  # upload test results
+        if: success() || failure()        # run this step even if previous step failed
+        with:
+          name: test-results
+          path: jest-junit.xml
