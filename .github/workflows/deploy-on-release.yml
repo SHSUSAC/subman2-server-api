@@ -43,7 +43,7 @@ jobs:
         uses: UriellViana/firebase-functions-deployment-decision@v1.0.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INDIVIDUAL_FUNCTION_GLOB: 'functions/**/*.ts'
+          INDIVIDUAL_FUNCTION_GLOB: 'functions/*.ts'
 
       - name: Build
         run: yarn run build
