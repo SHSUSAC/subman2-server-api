@@ -34,10 +34,6 @@ jobs:
         if: ${{ !env.ACT }}
         run: yarn install --immutable --check-cache
 
-      - name: Install Dependencies
-        if: ${{ env.ACT }}
-        run: yarn install
-
       - name: Decide functions to update v2
         id: functions_changed
         uses: UriellViana/firebase-functions-deployment-decision@v1.0.1
