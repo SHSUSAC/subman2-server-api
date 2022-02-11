@@ -57,7 +57,10 @@
     "titleTemplate": "{title}"
   },
   "jest": {
-    "reporters": [ "default", "jest-junit" ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

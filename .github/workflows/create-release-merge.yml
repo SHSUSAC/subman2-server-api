@@ -11,7 +11,7 @@ name: Create release on merge
 jobs:
   build_release:
     permissions:
-      packages: write
+      packages: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,6 +35,8 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install --immutable --check-cache
+        env:
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test
         run: yarn run test#ci
