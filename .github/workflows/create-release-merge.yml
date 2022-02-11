@@ -49,14 +49,15 @@ jobs:
           name: test-results
           path: junit.xml
 
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
-        with:
-          artifact: test-results            # artifact name
-          name: JEST Tests                  # Name of the check run which will be created
-          path: '*.xml'                     # Path to test results (inside artifact .zip)
-          reporter: jest-junit              # Format of test results
+## For some reason, this doesn't work inline, so it's disabled
+#      - name: Test Report
+#        uses: dorny/test-reporter@v1
+#        if: success() || failure()    # run this step even if previous step failed
+#        with:
+#          artifact: test-results            # artifact name
+#          name: JEST Tests                  # Name of the check run which will be created
+#          path: '*.xml'                     # Path to test results (inside artifact .zip)
+#          reporter: jest-junit              # Format of test results
 
       - name: Build Semantic Release
         if: ${{ !env.ACT }}
