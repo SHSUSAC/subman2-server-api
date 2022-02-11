@@ -1627,7 +1627,7 @@ __metadata:
     fast-check: 2.21.0
     firebase-admin: 9.8.0
     firebase-functions: 3.14.1
-    firebase-functions-test: 0.2.0
+    firebase-functions-test: 0.3.3
     firebase-tools: 10.1.4
     jest: 27.5.1
     jest-junit: 13.0.0
@@ -5159,16 +5159,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-functions-test@npm:0.2.0":
-  version: 0.2.0
-  resolution: "firebase-functions-test@npm:0.2.0"
+"firebase-functions-test@npm:0.3.3":
+  version: 0.3.3
+  resolution: "firebase-functions-test@npm:0.3.3"
   dependencies:
     "@types/lodash": ^4.14.104
     lodash: ^4.17.5
   peerDependencies:
     firebase-admin: ">=6.0.0"
     firebase-functions: ">=2.0.0"
-  checksum: 9378f2112adbc690f3d15e346b3879b47bc34d59d9e767a6db6f07d218e9a94f7743c2aaf444b1ee76c11efa395a5639af91db8731b10e8d4ceb1f1a3a99309d
+  checksum: f08f4c8ac40c6bab51ef53a22138b8e974180da86884e52386affea64cfd7f73a8e8a795f52000b347ae129411cb2569a0087cf071c86c6ace54ab4d6d978ac9
   languageName: node
   linkType: hard
 

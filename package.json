@@ -42,7 +42,7 @@
     "eslint-config-google": "0.14.0",
     "eslint-plugin-import": "2.25.4",
     "fast-check": "2.21.0",
-    "firebase-functions-test": "0.2.0",
+    "firebase-functions-test": "0.3.3",
     "firebase-tools": "10.1.4",
     "jest": "27.5.1",
     "jest-junit": "13.0.0",
