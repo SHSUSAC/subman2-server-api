@@ -1,0 +1,80 @@
+name: Deploy release to firebase
+on:
+  release:
+    types: [released]
+
+jobs:
+  deploy_functions:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://app.shsusac.org.uk/
+    steps:
+      - name: Checkout
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v2
+        with:
+          lfs: false
+
+      - name: Pull Tags
+        if: ${{ !env.ACT }}
+        run: git fetch --prune --tags
+
+      - run: npm install -g yarn
+        if: ${{ env.ACT }}
+
+      - name: Setup Node and Cached Dependencies
+        if: ${{ !env.ACT }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "yarn"
+
+      - name: Install Dependencies
+        if: ${{ !env.ACT }}
+        run: yarn install --immutable --check-cache
+
+      - name: Install Dependencies
+        if: ${{ env.ACT }}
+        run: yarn install
+
+      - name: Decide functions to update v2
+        id: functions_changed
+        uses: UriellViana/firebase-functions-deployment-decision@v1.0.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INDIVIDUAL_FUNCTION_GLOB: 'functions/**/*.ts'
+
+      - name: Build
+        run: yarn run build
+
+      - name: Configure Registry
+        uses: bikutadesu/create-npmrc@v1.0.0
+        with:
+          org_name: shsusac
+          auth_token: ${{ secrets.PACKAGE_TOKEN }}
+          always_auth: true
+
+      - name: Deploy Functions
+#        run: yarn firebase deploy --token $FIREBASE_TOKEN --only functions${{ steps.functions_changed.outputs.FUNCTIONS_CHANGED }}
+        run: echo --token $FIREBASE_TOKEN --only functions${{ steps.functions_changed.outputs.FUNCTIONS_CHANGED }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_CI_TOKEN }}
+
+  deploy_firestore:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://app.shsusac.org.uk/
+    steps:
+      - name: Checkout
+        if: ${{ !env.ACT }}
+        uses: actions/checkout@v2
+        with:
+          lfs: false
+
+      - name: Deploy Firestore
+        if: ${{ !env.ACT }}
+        run: yarn firebase deploy --only firestore --token $FIREBASE_TOKEN
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_CI_TOKEN }}

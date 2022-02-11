@@ -1,0 +1,28 @@
+{
+  "kind": "identitytoolkit#DownloadAccountResponse",
+  "users": [
+    {
+      "localId": "Le4dz8RhMmGvy60OG2lRBIAW1MuX",
+      "createdAt": "1634674903741",
+      "lastLoginAt": "1642194899999",
+      "displayName": "SHSUSAC Equipment",
+      "photoUrl": "https://lh3.googleusercontent.com/a/AATXAJypqazWSvghHzAhW_xF0-PPpfaF5nGEu1fHJ7l8=s96-c",
+      "customAttributes": "{\"EquipmentRole\":\"admin\"}",
+      "providerUserInfo": [
+        {
+          "providerId": "google.com",
+          "rawId": "116391632660282422952",
+          "federatedId": "116391632660282422952",
+          "displayName": "SHSUSAC Equipment",
+          "photoUrl": "https://lh3.googleusercontent.com/a/AATXAJypqazWSvghHzAhW_xF0-PPpfaF5nGEu1fHJ7l8=s96-c",
+          "email": "equipment@shusac.org.uk"
+        }
+      ],
+      "validSince": "1642116852",
+      "email": "equipment@shusac.org.uk",
+      "emailVerified": true,
+      "disabled": false,
+      "lastRefreshAt": "2022-01-15T01:45:35.684Z"
+    }
+  ]
+}

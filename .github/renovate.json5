@@ -1,0 +1,19 @@
+{
+  "extends": [
+	  "config:base",
+	  ":ignoreModulesAndTests",
+	  ":pinAllExceptPeerDependencies",
+	  ":automergeDigest",
+	  ":automergeMinor",
+	  ":automergeBranch",
+	  ":automergeRequireAllStatusChecks",
+	  ":ignoreUnstable",
+	  ":label(dependencies)",
+	  ":enableVulnerabilityAlertsWithLabel(dependencies)",
+	  ":semanticCommits",
+	  "group:recommended",
+	  //"group:definitelyTyped"
+	  "npm:unpublishSafe"
+  ],
+  "automergeStrategy": "merge-commit"
+}

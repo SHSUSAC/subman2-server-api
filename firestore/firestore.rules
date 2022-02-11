@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+	function isAuthenticated() {
+		return request.auth != null;
+	}
+
+	function hasAdminRole(roleString) {
+		return roleString == "admin";
+	}
+
+	function hasWriterRole(roleString) {
+		return hasAdminRole(roleString) || roleString == "writer";
+	}
+
+	function hasReaderRole(roleString) {
+		return hasAdminRole(roleString) || hasWriterRole(roleString) || roleString == "reader";
+	}
+
+	function hasRole(roleName) {
+		return isAuthenticated() && roleName in request.auth.token;
+	}
+
+	match /databases/{database}/documents {
+		match /cylinders/{cyDocument=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+			////			Pressure records need the pressure to be updated on the parent cylinder but not vice versa! Need Fix
+			//
+			//			match /pressureRecords/{document=**} {
+			//				allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			//				allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole) &&
+			//				debug(getAfter(
+			//									/databases/$(database)/documents/cylinders/$(cyDocument)
+			//								).data.pressure) && debug(request.resource.data.newPressure);
+			//			}
+		}
+
+		match /regulators/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+
+		match /bcds/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+
+		match /fins/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+
+		match /masks/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+
+		match /snorkels/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+
+		match /weights/{document=**} {
+			allow read: if hasRole("EquipmentRole") && hasReaderRole(request.auth.token.EquipmentRole);
+			allow write: if hasRole("EquipmentRole") && hasWriterRole(request.auth.token.EquipmentRole);
+		}
+	}
+}
