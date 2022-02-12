@@ -33,6 +33,8 @@ jobs:
       - name: Install Dependencies
         if: ${{ !env.ACT }}
         run: yarn install --immutable --check-cache
+        env:
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Decide functions to update v2
         id: functions_changed
@@ -71,6 +73,6 @@ jobs:
 
       - name: Deploy Firestore
         if: ${{ !env.ACT }}
-        run: yarn firebase deploy --only firestore --token $FIREBASE_TOKEN
+        run: yarn dlx firebase deploy --only firestore --token $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_CI_TOKEN }}
