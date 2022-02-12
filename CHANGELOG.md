@@ -1,5 +1,7 @@
 # Semantic Versioning Changelog
 
+## [1.0.1](https://github.com/SHSUSAC/subman2-server-api/compare/v1.0.0...v1.0.1) (2022-02-12)
+
 # 1.0.0 (2022-02-11)
 
 
