@@ -12,6 +12,9 @@ describe("ensureAppStarted", () => {
 		const initAppSpy = jest.spyOn(admin, "initializeApp")
 			.mockImplementation();
 
+		process.env.FIREBASE_CONFIG = "{}";
+		process.env.GCLOUD_PROJECT = "test";
+
 		ensureAppStarted();
 
 		expect(fetchAppSpy).toBeCalledTimes(1);
@@ -19,6 +22,8 @@ describe("ensureAppStarted", () => {
 
 		fetchAppSpy.mockRestore();
 		initAppSpy.mockRestore();
+		delete process.env.FIREBASE_CONFIG;
+		delete process.env.GCLOUD_PROJECT;
 	});
 
 	it("Does not start firebase SDK if it has already been started", () => {
@@ -26,6 +31,9 @@ describe("ensureAppStarted", () => {
 			.mockImplementation();
 		const initAppSpy = jest.spyOn(admin, "initializeApp")
 			.mockImplementation();
+
+		process.env.FIREBASE_CONFIG = "{}";
+		process.env.GCLOUD_PROJECT = "test";
 
 		ensureAppStarted();
 
@@ -38,6 +46,8 @@ describe("ensureAppStarted", () => {
 
 		fetchAppSpy.mockRestore();
 		initAppSpy.mockRestore();
+		delete process.env.FIREBASE_CONFIG;
+		delete process.env.GCLOUD_PROJECT;
 	});
 })
 

@@ -4,11 +4,11 @@ import {
 } from "firebase-functions/lib/providers/https";
 import {PermissionLevel, permissionLevelSchema} from "@shsusac/subman2-common-api";
 import {https} from "firebase-functions";
-import {app, initializeApp} from "firebase-admin";
+import * as admin from "firebase-admin";
 
 export function ensureAppStarted(): void {
-  if(!app()){
-    initializeApp();
+  if(!admin.app()){
+    admin.initializeApp();
   }
 }
 

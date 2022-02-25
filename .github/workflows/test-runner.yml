@@ -1,4 +1,4 @@
-name: 'Test Runner'
+name: "Test Runner"
 on:
   pull_request:
 jobs:
@@ -22,6 +22,18 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: "11"
+
+      - name: Cache firebase emulators
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/firebase/emulators
+          key: ${{ runner.os }}-firebase-emulators-${{ hashFiles("~/.cache/firebase/emulators/**") }}
 
       - name: Test
         run: yarn run test#ci

@@ -1,17 +1,16 @@
 import {https} from "firebase-functions";
-import {auth} from "firebase-admin";
-import {ensureAppStarted, verifyAuthenticationContext} from "../lib";
-import {UserPermissionsDTO} from "@shsusac/subman2-common-api";
+import * as admin from "firebase-admin";
+import { verifyAuthenticationContext} from "../lib";
+import {EssentialUserInformation} from "@shsusac/subman2-common-api";
 
-ensureAppStarted();
 
 export const ListUsers = https.onCall(async (data: undefined, context) => {
 
 	verifyAuthenticationContext(context, "SystemRole", "reader");
 
-	let userPage = await auth().listUsers();
+	let userPage = await admin.auth().listUsers();
 
-	const userList: auth.UserRecord[] = [];
+	const userList: admin.auth.UserRecord[] = [];
 
 	if(!userPage.users) {
 		return [];
@@ -19,14 +18,15 @@ export const ListUsers = https.onCall(async (data: undefined, context) => {
 
 	while(userPage && userPage.pageToken) {
 		userList.push(...userPage.users);
-		userPage = await auth().listUsers(undefined, userPage.pageToken);
+		userPage = await admin.auth().listUsers(undefined, userPage.pageToken);
 	}
 
 	userList.push(...userPage.users);
 
-	return userList.map<UserPermissionsDTO>(userRecord => {
-		const dto: UserPermissionsDTO = {
+	return userList.map<EssentialUserInformation>(userRecord => {
+		const dto: EssentialUserInformation = {
 			UID: userRecord.uid,
+			DisplayName: userRecord.displayName ?? (userRecord.email ?? userRecord.uid)
 		};
 
 		if (userRecord.customClaims?.EquipmentRole) {

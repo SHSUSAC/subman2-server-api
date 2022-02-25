@@ -1,19 +1,21 @@
 import {https} from "firebase-functions";
-import {auth} from "firebase-admin";
-import {ensureAppStarted, verifyAuthenticationContext} from "../lib";
-import {PermissionLevel, UserPermissionsDTO, userPermissionsDTOSchema} from "@shsusac/subman2-common-api";
+import * as admin from "firebase-admin";
+import { verifyAuthenticationContext} from "../lib";
+import {
+	PermissionLevel,
+	userPermissionModificationDTOSchema,
+	UserPermissionModificationDTO,
+} from "@shsusac/subman2-common-api";
 import {ZodError} from "zod";
-
-ensureAppStarted();
 
 export const UpdateUserPermissions = https.onCall(async (data, context) => {
 
 	verifyAuthenticationContext(context, "SystemRole", "admin");
 
 	const result:
-		{ success: true; data: UserPermissionsDTO; } |
-		{ success: false; error: ZodError<UserPermissionsDTO>; }
-		= await userPermissionsDTOSchema.safeParseAsync(data)
+		{ success: true; data: UserPermissionModificationDTO; } |
+		{ success: false; error: ZodError<UserPermissionModificationDTO>; }
+		= await userPermissionModificationDTOSchema.safeParseAsync(data)
 
 	if (!result.success) {
 		// handle error then return
@@ -51,6 +53,6 @@ export const UpdateUserPermissions = https.onCall(async (data, context) => {
 		userClaims.CalenderRole = userPermissionsDTO.Calender
 	}
 
-	await auth().setCustomUserClaims(data.UID, userClaims);
+	await admin.auth().setCustomUserClaims(data.UID, userClaims);
 	return;
 });

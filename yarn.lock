@@ -1573,12 +1573,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shsusac/subman2-common-api@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@shsusac/subman2-common-api@npm:1.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40shsusac%2Fsubman2-common-api%2F1.1.0%2F822a2a7039aa34df6ff3667d26e77ee8c8f53664f7dd947e5bbf1dca38564273"
+"@shsusac/subman2-common-api@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@shsusac/subman2-common-api@npm:2.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40shsusac%2Fsubman2-common-api%2F2.0.1%2Fc074c026068849ca239479116146f1c4bb126306723ecc3a292ea907805d2efd"
   dependencies:
     zod: 3.11.6
-  checksum: 5560b4d0aabf7c1bba7e8f170fe1088f94f75f994ab5d79d6d8422fd73c2a0e60e10877773d78afa3944653611efd9f2ad0a8721eb9c1ecc91f93bc9f70a7275
+  checksum: 19d9f1b41ccc8e850160664d4116758d37e7dab56aaf9f33a18603b5e1cfddbfc45d73d79c4b4071b8eae7cb8425ebd1aeedb39116126e81de59a5654df1f799
   languageName: node
   linkType: hard
 
@@ -1593,7 +1593,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/npm": 9.0.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@shsusac/subman2-common-api": 1.1.0
+    "@shsusac/subman2-common-api": 2.0.1
     "@types/jest": 27.4.0
     "@typescript-eslint/eslint-plugin": 3.10.1
     "@typescript-eslint/parser": 3.10.1
