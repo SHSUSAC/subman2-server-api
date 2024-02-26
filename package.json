@@ -35,7 +35,7 @@
     "@types/jest": "27.4.0",
     "@typescript-eslint/eslint-plugin": "3.10.1",
     "@typescript-eslint/parser": "3.10.1",
-    "eslint": "7.32.0",
+    "eslint": "8.57.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-import": "2.25.4",
     "fast-check": "2.21.0",
