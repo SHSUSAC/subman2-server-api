@@ -1602,7 +1602,7 @@ __metadata:
     eslint-plugin-import: 2.25.4
     fast-check: 2.21.0
     firebase-admin: 9.12.0
-    firebase-functions: 3.14.1
+    firebase-functions: 3.24.1
     firebase-functions-test: 0.3.3
     firebase-tools: 10.1.4
     jest: 27.5.1
@@ -1720,6 +1720,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
+  languageName: node
+  linkType: hard
+
+"@types/cors@npm:^2.8.5":
+  version: 2.8.19
+  resolution: "@types/cors@npm:2.8.19"
+  dependencies:
+    "@types/node": "*"
+  checksum: 9545cc532c9218754443f48a0c98c1a9ba4af1fe54a3425c95de75ff3158147bb39e666cb7c6bf98cc56a9c6dc7b4ce5b2cbdae6b55d5942e50c81b76ed6b825
   languageName: node
   linkType: hard
 
@@ -5098,17 +5107,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-functions@npm:3.14.1":
-  version: 3.14.1
-  resolution: "firebase-functions@npm:3.14.1"
+"firebase-functions@npm:3.24.1":
+  version: 3.24.1
+  resolution: "firebase-functions@npm:3.24.1"
   dependencies:
+    "@types/cors": ^2.8.5
     "@types/express": 4.17.3
     cors: ^2.8.5
     express: ^4.17.1
     lodash: ^4.17.14
+    node-fetch: ^2.6.7
   peerDependencies:
-    firebase-admin: ^8.0.0 || ^9.0.0
-  checksum: 805abbc373c884fd901f5b7ea188b00b299c08005509750aa73df07acf423e7af5b236c8a245d3f5195f651cfc0fb242ef930dd0ce5abf14f65406992d5f1789
+    firebase-admin: ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
+  bin:
+    firebase-functions: lib/bin/firebase-functions.js
+  checksum: d35711a27b615e2b78cdf63a3b3ca5604c0f8024bc086470a2676a26894e38f124cbb0455e7168bd3f57a0f7258c14c7cd0cd933d8da70d07e999d628d00b458
   languageName: node
   linkType: hard
 
