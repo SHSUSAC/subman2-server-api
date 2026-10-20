@@ -463,6 +463,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@firebase/app-types@npm:0.9.6":
+  version: 0.9.6
+  resolution: "@firebase/app-types@npm:0.9.6"
+  dependencies:
+    "@firebase/logger": 0.5.2
+  checksum: 15e9a0203c5f9167a6eb82e1a0ce16196e21eedee3a0b56c801414f7b1b90c5bf0e8f5fa0e1391b753ab91c44e8b4e79fea6389119319c37613c55a65ee40379
+  languageName: node
+  linkType: hard
+
 "@firebase/app@npm:*":
   version: 0.7.16
   resolution: "@firebase/app@npm:0.7.16"
@@ -550,6 +559,15 @@ __metadata:
   dependencies:
     tslib: ^2.1.0
   checksum: 1a51de912d24e05081bee84adc33665c5f198b261ddf87b41035f3af0fee035d021b3839d739d24ee07b96e7b190846e21fb1cdf3645c404a7cdde3a23765c1b
+  languageName: node
+  linkType: hard
+
+"@firebase/logger@npm:0.5.2":
+  version: 0.5.2
+  resolution: "@firebase/logger@npm:0.5.2"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: 72c69189cfc76d8caa1f2f1dfe9b602a4037343e444fa18d160f8a0ebe1da3ed2bd1ddcccb0b0d1d86efc24caa984de6d4915a7eda43de1f1729c09be6d44d65
   languageName: node
   linkType: hard
 
@@ -1586,7 +1604,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@shsusac/subman2-server-api@workspace:."
   dependencies:
-    "@firebase/app-types": 0.7.0
+    "@firebase/app-types": 0.9.6
     "@semantic-release/changelog": 6.0.1
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
